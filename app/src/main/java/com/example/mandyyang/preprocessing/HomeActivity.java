@@ -36,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        //bGassian
+        //bGassian1
         Button bGassian;
 
         bGassian = (Button)findViewById(R.id.bGassian);
