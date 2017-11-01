@@ -25,6 +25,11 @@ public class HomeActivity extends AppCompatActivity {
     public static final int DILATE = 5;
     //ERODE
     public static final int ERODE = 6;
+    //Opening
+    public static final int Opening = 9;
+    //Closing
+    public static final int Closing = 10;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,6 +128,30 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.putExtra("ACTION_MODE", ERODE);
+                startActivity(i);
+            }
+        });
+
+    //Closing
+        Button bClosing;
+        bClosing = (Button) findViewById(R.id.bClosing);
+        bClosing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", Closing);
+                startActivity(i);
+            }
+        });
+
+        //Opening
+        Button bOpening;
+        bOpening = (Button) findViewById(R.id.bOpening);
+        bOpening.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", Opening);
                 startActivity(i);
             }
         });

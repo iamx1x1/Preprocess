@@ -61,5 +61,18 @@
             android:layout_width="wrap_content"
             android:text="Erode Image" />
 
+        <Button
+            android:id="@+id/bOpening"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Opening" />
+
+        <Button
+            android:id="@+id/bClosing"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="CLosing" />
+
+
     </LinearLayout>
 </ScrollView>

@@ -194,6 +194,40 @@ public class MainActivity extends AppCompatActivity {
                                 Mat kernelErode =Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE,new Size(5,5));
                                 Imgproc.erode(src_gray,src_gray, kernelErode);
                                 Imgproc.cvtColor(src_gray,src,Imgproc.COLOR_GRAY2RGBA,4);
+
+                                break;
+
+
+                            //Opening ELLIPSE->RECT
+                            case HomeActivity.Opening:
+
+                                Imgproc.cvtColor(src, src_gray,Imgproc.COLOR_RGB2GRAY);
+                                Imgproc.threshold(src_gray, src_gray,100,255,Imgproc.THRESH_BINARY);
+                                Mat kernelClose=Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE,new Size(3,3));
+                                Imgproc.erode(src_gray,src_gray, kernelClose);
+
+                                Imgproc.cvtColor(src, src_gray,Imgproc.COLOR_RGB2GRAY);
+                                Imgproc.threshold(src_gray, src_gray,100,255,Imgproc.THRESH_BINARY);
+
+                                Mat kernelOpen =Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(10,10));
+                                Imgproc.dilate(src_gray,src_gray, kernelOpen);
+                                Imgproc.cvtColor(src_gray,src,Imgproc.COLOR_GRAY2RGBA,4);
+
+                                break;
+
+
+                            //Closing RECT->ELLIPSE
+                            case HomeActivity.Closing:
+                                Imgproc.cvtColor(src, src_gray,Imgproc.COLOR_RGB2GRAY);
+                                Imgproc.threshold(src_gray, src_gray,100,255,Imgproc.THRESH_BINARY);
+
+                                Mat kernelOpen1 =Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(3,3));
+                                Imgproc.dilate(src_gray,src_gray, kernelOpen1);
+
+                                Mat kernelColse1 =Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE,new Size(20,20));
+                                Imgproc.erode(src_gray,src_gray, kernelColse1);
+                                Imgproc.cvtColor(src_gray,src,Imgproc.COLOR_GRAY2RGBA,4);
+
                                 break;
 
 
