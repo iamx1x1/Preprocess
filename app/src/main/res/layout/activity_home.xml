@@ -36,5 +36,30 @@
             android:layout_width="wrap_content"
             android:text="@string/menu_sharpen_image" />
 
+        <Button
+            android:id="@+id/bThreshold"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Threshold Image" />
+
+
+        <Button
+            android:id="@+id/bAdaptiveThreshold"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Adaptive Threshold" />
+
+        <Button
+            android:id="@+id/bDilate"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Dilate Image" />
+
+        <Button
+            android:id="@+id/bErode"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Erode Image" />
+
     </LinearLayout>
 </ScrollView>

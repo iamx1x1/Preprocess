@@ -17,7 +17,14 @@ public class HomeActivity extends AppCompatActivity {
     public static final int MEDIAN_BLUR=3;
     //SHARPEN
     public static final int SHARPEN = 4;
-
+    //THRESHOLD
+    public static final int THRESHOLD = 7;
+    // ADAPTIVE_THRESHOLD
+    public static final int ADAPTIVE_THRESHOLD = 8;
+    //DILATE
+    public static final int DILATE = 5;
+    //ERODE
+    public static final int ERODE = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //bMean
         Button bMean;
-        bMean = (Button)findViewById(R.id.bMean);
+        bMean = (Button) findViewById(R.id.bMean);
         bMean.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,8 +45,7 @@ public class HomeActivity extends AppCompatActivity {
 
         //bGassian1
         Button bGassian;
-
-        bGassian = (Button)findViewById(R.id.bGassian);
+        bGassian = (Button) findViewById(R.id.bGassian);
         bGassian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,24 +55,80 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-    //bMedian
-        Button bMedian = (Button)findViewById(R.id.bMedian);
+        //bMedian
+        Button bMedian = (Button) findViewById(R.id.bMedian);
         bMedian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class); i.putExtra("ACTION_MODE", MEDIAN_BLUR);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", MEDIAN_BLUR);
                 startActivity(i);
-            } });
+            }
+        });
 
 
-     //SHARPEN
+        //SHARPEN
         Button bSharpen;
-        bSharpen = (Button)findViewById(R.id.bSharpen); bSharpen.setOnClickListener(new View.OnClickListener() {
+        bSharpen = (Button) findViewById(R.id.bSharpen);
+        bSharpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class); i.putExtra("ACTION_MODE", SHARPEN);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", SHARPEN);
                 startActivity(i);
-            } });
+            }
+        });
+
+        //THRESHOLD
+        Button bThreshold;
+        bThreshold = (Button) findViewById(R.id.bThreshold);
+        bThreshold.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", THRESHOLD);
+                startActivity(i);
+            }
+        });
+//bAdaptiveThreshold
+        Button bAdaptiveThreshold;
+        bAdaptiveThreshold = (Button) findViewById(R.id.bAdaptiveThreshold);
+        bAdaptiveThreshold.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", ADAPTIVE_THRESHOLD);
+                startActivity(i);
+            }
+        });
+
+
+        //DILATE
+        Button bDilate;
+        bDilate = (Button) findViewById(R.id.bDilate);
+        bDilate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", DILATE);
+                startActivity(i);
+            }
+        });
+
+   //Erode
+
+        Button bErode;
+        bErode = (Button) findViewById(R.id.bErode);
+        bErode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                i.putExtra("ACTION_MODE", ERODE);
+                startActivity(i);
+            }
+        });
+
+
 
     }
+
 }

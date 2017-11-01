@@ -22,11 +22,17 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.android.Utils;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfPoint;
+import org.opencv.core.Point;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = "OpenCV";
@@ -148,6 +154,49 @@ public class MainActivity extends AppCompatActivity {
                                 kernel.put(0, 0, 0, -1, 0, -1, 5, -1, 0, -1, 0);
                                 Imgproc.filter2D(src, src, src_gray.depth(), kernel);
                                 break;
+
+                       //THRESHOLD
+
+                            case HomeActivity.THRESHOLD:
+                                Imgproc.cvtColor(src, src_gray, Imgproc.COLOR_BGR2GRAY);
+                                Imgproc.threshold(src_gray, src_gray,0,255,Imgproc.THRESH_OTSU);
+                               // List<MatOfPoint> contours = new ArrayList<>();
+                               // Mat hierarchy = new Mat();
+                               // Imgproc.findContours(src_gray,contours,hierarchy,Imgproc.RETR_EXTERNAL,Imgproc.CHAIN_APPROX_SIMPLE);
+                               // for (int idx=0;idx>=0; idx= (int)hierarchy.get(0,idx)[0]){
+                               //     MatOfPoint matOfPoint =contours.get(idx);
+                               //     Rect rect = Imgproc.boundingRect(matOfPoint);
+                               //     Imgproc.rectangle(src,new Point(rect.x , rect.y),new Point(rect.x + rect.width,rect.y+rect.height),new Scalar(0,255,0));
+                               // }
+
+                                Imgproc.cvtColor(src_gray,src,Imgproc.COLOR_GRAY2BGR,4);
+                                break;
+
+                            //ADAPTIVE_THRESHOLD
+                            case HomeActivity.ADAPTIVE_THRESHOLD:
+                                Imgproc.cvtColor(src, src, Imgproc.COLOR_BGR2GRAY);
+                                Imgproc.adaptiveThreshold(src, src, 255, Imgproc.ADAPTIVE_THRESH_GAUSSIAN_C,Imgproc.THRESH_BINARY, 3, 0);
+                                break;
+
+                            //Dilate 膨脹
+                            case HomeActivity.DILATE:
+                                Imgproc.cvtColor(src, src_gray,Imgproc.COLOR_RGB2GRAY);
+                                Imgproc.threshold(src_gray, src_gray,100,255,Imgproc.THRESH_BINARY);
+                                Mat kernelDilate =Imgproc.getStructuringElement(Imgproc.MORPH_RECT,new Size(3,3));
+                                Imgproc.dilate(src_gray,src_gray, kernelDilate);
+                                Imgproc.cvtColor(src_gray,src,Imgproc.COLOR_GRAY2RGBA,4);
+                                break;
+                            //Erode 侵蝕
+
+                            case HomeActivity.ERODE:
+                                Imgproc.cvtColor(src, src_gray,Imgproc.COLOR_RGB2GRAY);
+                                Imgproc.threshold(src_gray, src_gray,100,255,Imgproc.THRESH_BINARY);
+                                Mat kernelErode =Imgproc.getStructuringElement(Imgproc.MORPH_ELLIPSE,new Size(5,5));
+                                Imgproc.erode(src_gray,src_gray, kernelErode);
+                                Imgproc.cvtColor(src_gray,src,Imgproc.COLOR_GRAY2RGBA,4);
+                                break;
+
+
 
                         }
 
